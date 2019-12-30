@@ -1,5 +1,5 @@
-# llvm-essentials-examples
-Examples described in LLVM essentials book.
+# llvm-core-lib-examples
+Examples described in Getting started with LLVM core libraries book.
 Build using Visual studio 2017 (v15). Assumes LLVM to be installed at 'C:\LLVM\'
 
  - ### llvm-func-pass
