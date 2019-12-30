@@ -21,7 +21,7 @@ Build using Visual studio 2017 (v15). Assumes LLVM to be installed at 'C:\LLVM\'
     Consists of source code for a tool that would use clang lexer to emit tokens from given c/cpp source file passed as an argument
     ```
     Source file: min.c
-    int min(int a, int b) 
+    int min(int a, int b)
     {
         if (a < b)
             return a;
@@ -36,3 +36,12 @@ Build using Visual studio 2017 (v15). Assumes LLVM to be installed at 'C:\LLVM\'
     PUNCTUATION({) KEYWORD(if) PUNCTUATION(() IDENTIFIER(a) PUNCTUATION(<) IDENTIFIER(b)PUNCTUATION()) KEYWORD(return) IDENTIFIER(a)
     PUNCTUATION(;) KEYWORD(return)
     ``
+
+- ### llvm-clang-traverse-ast
+    Tool to parse provided source code and print function names using its declaraion. Function name is obtained by tranversing the AST (abstract syntax tree)
+    provided by clang
+
+    ```
+    >> llvm-clang-traverse-ast.exe min.c
+    llvm-clang-traverse-ast.exe min.c
+    ```
