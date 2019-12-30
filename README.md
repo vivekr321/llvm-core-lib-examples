@@ -43,5 +43,5 @@ Build using Visual studio 2017 (v15). Assumes LLVM to be installed at 'C:\LLVM\'
 
     ```
     >> llvm-clang-traverse-ast.exe min.c
-    llvm-clang-traverse-ast.exe min.c
+    min.c:1:5 declares min
     ```
