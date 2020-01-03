@@ -45,3 +45,61 @@ Build using Visual studio 2017 (v15). Assumes LLVM to be installed at 'C:\LLVM\'
     >> llvm-clang-traverse-ast.exe min.c
     min.c:1:5 declares min
     ```
+
+- ### llvm-clang-ast-stats
+    Tool to print out abstract syntax tree statisitics. This tool attempst to perform actions performed by clang driver in a simplified manner (not handling all use cases).
+
+    ```
+    //Input Source: fib.cpp
+    #define MAX_INPUT 1000
+
+    int fib(int n)
+    {
+        if (n > MAX_INPUT)
+        {
+            return 0;
+        }
+
+        if (n == 0 || n == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return fib(n - 1) + fib(n - 2);
+        }
+    }
+    ```
+
+
+    ```
+    >>llvm-clang-ast-stats.exe fib.cpp
+    int fib(int n) {
+        if (n > 1000) {
+            return 0;
+        }
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return fib(n - 1) + fib(n - 2);
+        }
+    }
+
+    *** AST Context Stats:
+      69 types total.
+        58 Builtin types, 24 each (1392 bytes)
+        4 Complex types, 40 each (160 bytes)
+        1 FunctionProto types, 40 each (40 bytes)
+        5 Pointer types, 40 each (200 bytes)
+        1 Record types, 32 each (32 bytes)
+    Total bytes = 1824
+    0/0 implicit default constructors created
+    0/0 implicit copy constructors created
+    0/0 implicit copy assignment operators created
+    0/0 implicit destructors created
+
+    Number of memory regions: 2
+    Bytes used: 4636
+    Bytes allocated: 8192
+    Bytes wasted: 3556 (includes alignment, etc)
+    ```
